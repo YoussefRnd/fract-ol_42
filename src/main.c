@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:55:43 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/05 04:22:56 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/06 03:35:08 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 		fractal.name = argv[1];
 		fractal_init(&fractal);
 		fractal_render(&fractal);
+		events_init(&fractal);
 		mlx_loop(fractal.mlx_ptr);
 	}
 }

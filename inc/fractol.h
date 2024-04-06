@@ -6,16 +6,16 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:58:38 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/05 04:22:36 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/06 03:55:52 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+# include "../MLX42/include/MLX42/MLX42.h"
 # include "../lib/Libft/libft.h"
 # include <math.h>
-# include <mlx.h>
 
 # define WIDTH 1080
 # define HEIGHT 1080
@@ -60,11 +60,14 @@ typedef struct s_fractal
 }			t_fractal;
 
 void		fractal_init(t_fractal *fractal);
+void		events_init(t_fractal *fractal);
 
 void		fractal_render(t_fractal *fractal);
 
 double		scale(double value, double new_min, double new_max, double old_max);
 t_complex	square_complex(t_complex a);
 t_complex	sum_complex(t_complex a, t_complex b);
+
+void		key_press_handler(mlx_key_data_t keydata, void *param);
 
 #endif

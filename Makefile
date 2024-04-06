@@ -4,14 +4,19 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -fr
 MKDIR = mkdir -p
-MLX = -lmlx -framework OpenGL -framework AppKit
+MLX_FLAGS = -framework Cocoa -framework OpenGL -framework IOKit -lglfw -L"/Users/yboumlak/goinfre/homebrew/Cellar/glfw/3.4/lib"
 
 LIBFT_DIR = lib/Libft
 LIBFT = -L$(LIBFT_DIR) -lft
 
+MLX_DIR = MLX42
+MLX = $(MLX_DIR)/build/libmlx42.a
+
 SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = inc
+
+HEADERS = -I ./$(SRC_DIR) -I $(LIBMLX)/include
 
 SRCS = $(wildcard $(SRC_DIR)/*.c)
 
@@ -22,12 +27,12 @@ all: $(NAME)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c 
 	@$(MKDIR) $(OBJ_DIR)
 	@echo "Compiling $<..."
-	@$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(HEADERS)
 
 $(NAME): $(OBJS)
 	@make -s -C $(LIBFT_DIR)
 	@echo "Building $@..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -I$(INC_DIR) $(LIBFT) $(MLX)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(HEADERS) $(LIBFT) $(MLX) $(MLX_FLAGS)
 	@echo "$@ is ready!"
 
 clean:

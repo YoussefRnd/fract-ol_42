@@ -6,20 +6,11 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 00:45:23 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/05 03:54:26 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/06 02:22:17 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
-
-void	pixel_put(t_fractal *fractal, int x, int y, int color)
-{
-	int	offset;
-
-	offset = (y * fractal->img.line_size) + (x * (fractal->img.bits_per_pixel
-				/ 8));
-	(*(unsigned int *)(offset + fractal->img.pixel_ptr)) = color;
-}
 
 // Todo : Implement the draw_pixel function
 //! z = z^2 + c
@@ -44,12 +35,12 @@ void	draw_pixel(t_fractal *fractal, int x, int y)
 		if (z.real * z.real + z.im * z.im > fractal->escape_value)
 		{
 			color = scale(i, BLACK, WHITE, fractal->max_iter);
-			pixel_put(fractal, x, y, color);
+			mlx_put_pixel(fractal->img.img_ptr, x, y, color);
 			return ;
 		}
 		i++;
 	}
-	pixel_put(fractal, x, y, BLACK);
+	mlx_put_pixel(fractal->img.img_ptr, x, y, BLUE);
 }
 
 void	fractal_render(t_fractal *fractal)
@@ -66,8 +57,7 @@ void	fractal_render(t_fractal *fractal)
 			draw_pixel(fractal, x, y);
 			x++;
 		}
-		mlx_put_image_to_window(fractal->mlx_ptr, fractal->win_ptr,
-			fractal->img.img_ptr, 0, 0);
+		mlx_image_to_window(fractal->mlx_ptr, fractal->img.img_ptr, 0, 0);
 		y++;
 	}
 }
