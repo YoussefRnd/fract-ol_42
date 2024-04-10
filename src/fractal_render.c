@@ -6,16 +6,11 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 00:45:23 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/06 02:22:17 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/10 08:49:35 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
-
-// Todo : Implement the draw_pixel function
-//! z = z^2 + c
-//! z(0, 0)
-//! c(x, y)
 
 void	draw_pixel(t_fractal *fractal, int x, int y)
 {
@@ -24,10 +19,10 @@ void	draw_pixel(t_fractal *fractal, int x, int y)
 	int			i;
 	int			color;
 
-	z.real = 0;
-	z.im = 0;
-	c.real = scale(x, -2, 2, WIDTH);
-	c.im = scale(y, 2, -2, HEIGHT);
+	z.real = 0.0;
+	z.im = 0.0;
+	c.real = fractal->zoom * scale(x, -2, 2, WIDTH) + fractal->shift_x;
+	c.im = fractal->zoom * scale(y, 2, -2, HEIGHT) + fractal->shift_y;
 	i = 0;
 	while (i < fractal->max_iter)
 	{
@@ -57,7 +52,7 @@ void	fractal_render(t_fractal *fractal)
 			draw_pixel(fractal, x, y);
 			x++;
 		}
-		mlx_image_to_window(fractal->mlx_ptr, fractal->img.img_ptr, 0, 0);
 		y++;
 	}
+	mlx_image_to_window(fractal->mlx_ptr, fractal->img.img_ptr, 0, 0);
 }

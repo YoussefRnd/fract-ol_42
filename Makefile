@@ -1,15 +1,16 @@
 NAME = fractol
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS =  -g
 RM = rm -fr
 MKDIR = mkdir -p
-MLX_FLAGS = -framework Cocoa -framework OpenGL -framework IOKit -lglfw -L"/Users/yboumlak/goinfre/homebrew/Cellar/glfw/3.4/lib"
+MLX_FLAGS_MAC = -framework Cocoa -framework OpenGL -framework IOKit -lglfw -L"/Users/yboumlak/goinfre/homebrew/Cellar/glfw/3.4/lib"
+MLX_FLAGS_LINUX = -ldl -lglfw -pthread -lm
 
 LIBFT_DIR = lib/Libft
 LIBFT = -L$(LIBFT_DIR) -lft
 
-MLX_DIR = MLX42
+MLX_DIR = lib/MLX42
 MLX = $(MLX_DIR)/build/libmlx42.a
 
 SRC_DIR = src
@@ -32,7 +33,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 $(NAME): $(OBJS)
 	@make -s -C $(LIBFT_DIR)
 	@echo "Building $@..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(HEADERS) $(LIBFT) $(MLX) $(MLX_FLAGS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(HEADERS) $(LIBFT) $(MLX) $(MLX_FLAGS_LINUX)
 	@echo "$@ is ready!"
 
 clean:
