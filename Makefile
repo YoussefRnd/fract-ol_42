@@ -17,7 +17,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = inc
 
-HEADERS = -I ./$(SRC_DIR) -I $(LIBMLX)/include
+HEADERS = -I $(INC_DIR) -I $(MLX_DIR)/include
 
 SRCS = $(wildcard $(SRC_DIR)/*.c)
 
@@ -25,7 +25,7 @@ OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c 
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/fractol.h
 	@$(MKDIR) $(OBJ_DIR)
 	@echo "Compiling $<..."
 	@$(CC) $(CFLAGS) -c $< -o $@ $(HEADERS)
@@ -33,7 +33,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 $(NAME): $(OBJS)
 	@make -s -C $(LIBFT_DIR)
 	@echo "Building $@..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(HEADERS) $(LIBFT) $(MLX) $(MLX_FLAGS_LINUX)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS_LINUX)
 	@echo "$@ is ready!"
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 22:08:50 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/09 05:56:54 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/13 02:19:28 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	init_mlx(t_fractal *fractal)
 
 void	data_init(t_fractal *fractal)
 {
-	fractal->escape_value = 4;
+	fractal->escape_value = 4.0;
 	fractal->max_iter = 42;
-	fractal->shift_x = 0;
-	fractal->shift_y = 0;
-	fractal->zoom = 1;
+	fractal->shift_x = 0.0;
+	fractal->shift_y = 0.0;
+	fractal->zoom = 1.0;
 }
 
 void	events_init(t_fractal *fractal)

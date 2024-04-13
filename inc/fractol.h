@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:58:38 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/09 05:56:21 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/13 04:04:20 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define WIDTH 1080
 # define HEIGHT 1080
 
-# define BLACK 0x000000
-# define WHITE 0xFFFFFF
+# define BLACK (0xFF << 24 | 0 << 16 | 0 << 8 | 0)
+# define WHITE (0xFF << 24 | 255 << 16 | 255 << 8 | 255)
 
 # define RED 0xFF0000
 # define GREEN 0x00FF00
