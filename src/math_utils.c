@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 01:17:06 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/05 01:22:32 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/13 19:57:56 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_complex	sum_complex(t_complex a, t_complex b)
 
 t_complex	square_complex(t_complex a)
 {
-	t_complex result;
+	t_complex	result;
 
 	result.real = a.real * a.real - a.im * a.im;
 	result.im = 2 * a.real * a.im;

@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:55:43 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/06 03:35:08 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/14 03:29:47 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,14 @@ int	main(int argc, char **argv)
 		|| (argc == 4 && !ft_strncmp(lowercase(argv[1]), "julia", 5)))
 	{
 		fractal.name = argv[1];
+		if (!ft_strncmp(fractal.name, "julia", 5))
+		{
+			fractal.is_julia = 1;
+			fractal.julia.real = atod(argv[2]);
+			fractal.julia.im = atod(argv[3]);
+		}
 		fractal_init(&fractal);
 		fractal_render(&fractal);
-		events_init(&fractal);
 		mlx_loop(fractal.mlx_ptr);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 02:43:52 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/13 02:40:10 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/13 16:43:24 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	close_window(void *param)
 	t_fractal	*fractal;
 
 	fractal = (t_fractal *)param;
-	mlx_delete_image(fractal->mlx_ptr, fractal->img.img_ptr);
+	mlx_delete_image(fractal->mlx_ptr, fractal->img);
 	mlx_close_window(fractal->mlx_ptr);
 	exit(EXIT_SUCCESS);
 }
