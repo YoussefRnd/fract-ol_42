@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:58:38 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/14 04:00:49 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/15 03:27:27 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void			events_init(t_fractal *fractal);
 
 void			fractal_render(t_fractal *fractal);
 
-int				mandelbrot_julia(t_fractal *fractal, t_complex *z);
+int				julia(t_fractal *fractal, t_complex *z, t_complex *c);
+int				mandelbrot(t_fractal *fractal, t_complex *z, t_complex *c);
 
 double			scale(double value, double new_min, double new_max,
 					double old_max);

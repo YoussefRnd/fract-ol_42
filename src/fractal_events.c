@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 02:43:52 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/13 16:43:24 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:35:02 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	close_window(void *param)
 void	scroll_handler(double xdelta, double ydelta, void *param)
 {
 	t_fractal	*fractal;
-
+	(void)xdelta;
 	fractal = (t_fractal *)param;
 	if (ydelta > 0)
 		fractal->zoom *= 1.05;

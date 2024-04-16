@@ -1,7 +1,7 @@
 NAME = fractol
 
 CC = cc
-CFLAGS =  -g
+CFLAGS = -Wall -Wextra -Werror -O3 -g
 RM = rm -fr
 MKDIR = mkdir -p
 MLX_FLAGS_MAC = -framework Cocoa -framework OpenGL -framework IOKit -lglfw -L"/Users/yboumlak/goinfre/homebrew/Cellar/glfw/3.4/lib"
