@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math_utils.c                                       :+:      :+:    :+:   */
+/*   math_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 01:17:06 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/13 19:57:56 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:57:00 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fractol.h"
+#include "../../inc/fractol_bonus.h"
 
 double	scale(double value, double new_min, double new_max, double old_max)
 {

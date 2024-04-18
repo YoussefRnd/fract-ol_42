@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:55:43 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/15 03:18:44 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:56:55 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fractol.h"
+#include "../../inc/fractol_bonus.h"
 
 char	*lowercase(char *str)
 {
@@ -35,12 +35,10 @@ int	main(int argc, char **argv)
 		fractal.name = argv[1];
 		if (!ft_strncmp(fractal.name, "julia", 5))
 		{
-			fractal.is_julia = 1;
 			fractal.julia.real = atod(argv[2]);
 			fractal.julia.im = atod(argv[3]);
+			printf("x: %f\t y: %f\n", fractal.julia.real, fractal.julia.im);
 		}
-		else
-			fractal.is_julia = 0;
 		fractal_init(&fractal);
 		fractal_render(&fractal);
 		mlx_loop(fractal.mlx_ptr);

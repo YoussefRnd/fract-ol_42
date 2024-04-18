@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:58:38 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/18 10:36:35 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:27:58 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_fractal
 	mlx_image_t	*img;
 	double		escape_value;
 	int			max_iter;
+	double		shift_x;
+	double		shift_y;
 	double		zoom;
 	t_complex	julia;
 }				t_fractal;
