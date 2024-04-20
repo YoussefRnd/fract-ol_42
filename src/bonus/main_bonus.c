@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:55:43 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/18 12:56:55 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/19 22:31:40 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	main(int argc, char **argv)
 		{
 			fractal.julia.real = atod(argv[2]);
 			fractal.julia.im = atod(argv[3]);
-			printf("x: %f\t y: %f\n", fractal.julia.real, fractal.julia.im);
 		}
 		fractal_init(&fractal);
 		fractal_render(&fractal);

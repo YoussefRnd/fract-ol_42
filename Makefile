@@ -17,17 +17,16 @@ MLX = $(MLX_DIR)/build/libmlx42.a
 SRC_DIR = src/mandatory
 SRC_BONUS_DIR = src/bonus
 OBJ_DIR = obj
+OBJ_BONUS_DIR = obj_bonus
 INC_DIR = inc
 
 HEADERS = -I $(INC_DIR) -I $(MLX_DIR)/include
 
 SRCS = $(wildcard $(SRC_DIR)/*.c)
-
-OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-
 SRCS_BONUS = $(wildcard $(SRC_BONUS_DIR)/*.c)
 
-OBJS_BONUS = $(SRC_BONUS:%(SRC_BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJS_BONUS = $(SRCS_BONUS:$(SRC_BONUS_DIR)/%.c=$(OBJ_BONUS_DIR)/%.o)
 
 all: $(NAME)
 
@@ -42,11 +41,11 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS_MAC)
 	@echo "$@ is ready!"
 
-bonus : $(BOUNS)
+bonus: $(BONUS)
 
-$(OBJ_DIR)/%.o: $(SRC_BONUS_DIR)/%.c $(INC_DIR)/fractol_bonus.h
-	@$(MKDIR) $(OBJ_DIR)
-	@ehco "Compiling $<..."
+$(OBJ_BONUS_DIR)/%.o: $(SRC_BONUS_DIR)/%.c $(INC_DIR)/fractol_bonus.h
+	@$(MKDIR) $(OBJ_BONUS_DIR)
+	@echo "Compiling $<..."
 	@$(CC) $(CFLAGS) -c $< -o $@ $(HEADERS)
 
 $(BONUS): $(OBJS_BONUS)
@@ -58,7 +57,7 @@ $(BONUS): $(OBJS_BONUS)
 clean:
 	@echo "Cleaning object files..."
 	@make -s clean -C $(LIBFT_DIR)
-	@$(RM) $(OBJ_DIR)
+	@$(RM) $(OBJ_DIR) $(OBJ_BONUS_DIR)
 
 fclean: clean
 	@echo "Cleaning $(NAME)..."

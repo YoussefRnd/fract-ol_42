@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 02:43:52 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/18 13:04:30 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/19 22:58:53 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,32 @@ void	close_window(void *param)
 	t_fractal	*fractal;
 
 	fractal = (t_fractal *)param;
-	mlx_delete_image(fractal->mlx_ptr, fractal->img);
-	mlx_close_window(fractal->mlx_ptr);
+	mlx_terminate(fractal->mlx_ptr);
 	exit(EXIT_SUCCESS);
 }
 
 void	scroll_handler(double xdelta, double ydelta, void *param)
 {
 	t_fractal	*fractal;
+	double		zoom_factor;
+	double		cursor_x;
+	double		cursor_y;
 
 	(void)xdelta;
+	zoom_factor = 0.0;
 	fractal = (t_fractal *)param;
 	if (ydelta > 0)
-		fractal->zoom *= 1.05;
+		zoom_factor = 1.05; 
 	else if (ydelta < 0)
-		fractal->zoom *= 0.95;
+		zoom_factor = 0.95;
+	else
+		return ;
+	cursor_x = scale(fractal->xpos, fractal->x_min, fractal->x_max, WIDTH);
+	cursor_y = scale(fractal->ypos, fractal->y_max, fractal->y_min, HEIGHT);
+	fractal->x_min = cursor_x + ((fractal->x_min - cursor_x) * zoom_factor);
+	fractal->y_min = cursor_y + ((fractal->y_min - cursor_y) * zoom_factor);
+	fractal->y_max = cursor_y + ((fractal->y_max - cursor_y) * zoom_factor);
+	fractal->x_max = cursor_x + ((fractal->x_max - cursor_x) * zoom_factor);
 	fractal_render(fractal);
 }
 
@@ -63,4 +74,14 @@ void	key_handler(mlx_key_data_t keydata, void *param)
 	else
 		return ;
 	fractal_render(fractal);
+}
+
+void	cursor_handler(double xpos, double ypos, void *param)
+{
+	t_fractal *fractal;
+
+
+	fractal = (t_fractal *)param;
+	fractal->xpos = xpos;
+	fractal->ypos = ypos;
 }
