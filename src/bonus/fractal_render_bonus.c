@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 00:45:23 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/20 15:55:19 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:47:19 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	fractal_render(t_fractal *fractal)
 				mlx_put_pixel(fractal->img, coord.real, coord.im, get_rgba(0, 0,
 						0, 255));
 			else
-				mlx_put_pixel(fractal->img, coord.real, coord.im, bernstein_color(fractal, i));
+				mlx_put_pixel(fractal->img, coord.real, coord.im,
+					bernstein_color(fractal, i));
 			coord.real++;
 		}
 		coord.im++;

@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 17:14:20 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/21 15:18:45 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/21 18:18:18 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ double	atod(char *str)
 		factor *= 10;
 		i++;
 	}
+	if (ft_isdigit(str[i]))
+		invalid_input();
 	return (sign * (res / factor));
 }
 
