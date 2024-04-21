@@ -6,25 +6,27 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 00:45:23 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/19 22:19:54 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/20 15:55:19 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol_bonus.h"
 
-int	which_fractal_set(t_fractal *fractal, t_complex *coord)
+double	which_fractal_set(t_fractal *fractal, t_complex *coord)
 {
 	if (!ft_strncmp(fractal->name, "julia", 5))
 		return (julia(fractal, coord));
 	else if (!ft_strncmp(fractal->name, "mandelbrot", 10))
 		return (mandelbrot(fractal, coord));
+	else if (!ft_strncmp(fractal->name, "burning_ship", 12))
+		return (burning_ship(fractal, coord));
 	return (0);
 }
 
 void	fractal_render(t_fractal *fractal)
 {
 	t_complex	coord;
-	int			i;
+	double		i;
 
 	i = 0;
 	coord.im = 0;
@@ -38,8 +40,7 @@ void	fractal_render(t_fractal *fractal)
 				mlx_put_pixel(fractal->img, coord.real, coord.im, get_rgba(0, 0,
 						0, 255));
 			else
-				mlx_put_pixel(fractal->img, coord.real, coord.im,
-					bernstein_color(fractal, i));
+				mlx_put_pixel(fractal->img, coord.real, coord.im, bernstein_color(fractal, i));
 			coord.real++;
 		}
 		coord.im++;

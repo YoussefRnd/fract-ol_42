@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:58:38 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/19 21:06:50 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:19:10 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void			fractal_render(t_fractal *fractal);
 
 int				julia(t_fractal *fractal, t_complex *coord);
 int				mandelbrot(t_fractal *fractal, t_complex *coord);
-int				nova(t_fractal *fractal, t_complex *coord);
+int				burning_ship(t_fractal *fractal, t_complex *coord);
 
 double			scale(double value, double new_min, double new_max,
 					double old_max);
@@ -74,6 +74,7 @@ t_complex		square_complex(t_complex a);
 t_complex		sum_complex(t_complex a, t_complex b);
 
 double			atod(char *str);
+char			*lowercase(char *str);
 
 void			close_window(void *param);
 void			key_handler(mlx_key_data_t keydata, void *param);

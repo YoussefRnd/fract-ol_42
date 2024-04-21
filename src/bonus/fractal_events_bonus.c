@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 02:43:52 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/19 22:58:53 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/21 14:34:28 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,22 @@ void	close_window(void *param)
 void	scroll_handler(double xdelta, double ydelta, void *param)
 {
 	t_fractal	*fractal;
-	double		zoom_factor;
 	double		cursor_x;
 	double		cursor_y;
+	double		zoom_factor;
 
 	(void)xdelta;
-	zoom_factor = 0.0;
 	fractal = (t_fractal *)param;
-	if (ydelta > 0)
-		zoom_factor = 1.05; 
-	else if (ydelta < 0)
+	if (ydelta < 0)
+	{
+		fractal->zoom *= 1.05;
+		zoom_factor = 1.05;
+	}
+	else if (ydelta > 0)
+	{
+		fractal->zoom *= 0.95;
 		zoom_factor = 0.95;
+	}
 	else
 		return ;
 	cursor_x = scale(fractal->xpos, fractal->x_min, fractal->x_max, WIDTH);
@@ -43,33 +48,33 @@ void	scroll_handler(double xdelta, double ydelta, void *param)
 	fractal->y_min = cursor_y + ((fractal->y_min - cursor_y) * zoom_factor);
 	fractal->y_max = cursor_y + ((fractal->y_max - cursor_y) * zoom_factor);
 	fractal->x_max = cursor_x + ((fractal->x_max - cursor_x) * zoom_factor);
+	printf("Zoom: %f\n", fractal->zoom);
 	fractal_render(fractal);
 }
 
-void	key_handler(mlx_key_data_t keydata, void *param)
+void	key_handler(mlx_key_data_t kdata, void *param)
 {
 	t_fractal	*fractal;
 
 	fractal = (t_fractal *)param;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
+	if (kdata.key == MLX_KEY_ESCAPE && kdata.action == MLX_RELEASE)
 		close_window(fractal);
-	else if ((keydata.key == MLX_KEY_MINUS
-			|| keydata.key == MLX_KEY_KP_SUBTRACT)
-		&& keydata.action == MLX_RELEASE)
+	else if ((kdata.key == MLX_KEY_MINUS || kdata.key == MLX_KEY_KP_SUBTRACT)
+		&& kdata.action == MLX_RELEASE)
 	{
 		if (fractal->max_iter - 10 > 0)
 			fractal->max_iter -= 10;
 	}
-	else if (((keydata.key == MLX_KEY_EQUAL && keydata.modifier == MLX_SHIFT)
-			|| keydata.key == MLX_KEY_KP_ADD) && keydata.action == MLX_RELEASE)
+	else if (((kdata.key == MLX_KEY_EQUAL && kdata.modifier == MLX_SHIFT)
+			|| kdata.key == MLX_KEY_KP_ADD) && kdata.action == MLX_RELEASE)
 		fractal->max_iter += 10;
-	else if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
+	else if (kdata.key == MLX_KEY_UP && kdata.action == MLX_RELEASE)
 		fractal->shift_y -= 0.5 * fractal->zoom;
-	else if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
+	else if (kdata.key == MLX_KEY_DOWN && kdata.action == MLX_RELEASE)
 		fractal->shift_y += 0.5 * fractal->zoom;
-	else if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
+	else if (kdata.key == MLX_KEY_LEFT && kdata.action == MLX_RELEASE)
 		fractal->shift_x += 0.5 * fractal->zoom;
-	else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
+	else if (kdata.key == MLX_KEY_RIGHT && kdata.action == MLX_RELEASE)
 		fractal->shift_x -= 0.5 * fractal->zoom;
 	else
 		return ;
@@ -79,7 +84,6 @@ void	key_handler(mlx_key_data_t keydata, void *param)
 void	cursor_handler(double xpos, double ypos, void *param)
 {
 	t_fractal *fractal;
-
 
 	fractal = (t_fractal *)param;
 	fractal->xpos = xpos;

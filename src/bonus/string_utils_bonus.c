@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 17:14:20 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/18 12:57:06 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:18:45 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,17 @@ double	atod(char *str)
 		i++;
 	}
 	return (sign * (res / factor));
+}
+
+char	*lowercase(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		str[i] = ft_tolower(str[i]);
+		i++;
+	}
+	return (str);
 }

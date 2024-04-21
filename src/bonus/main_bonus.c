@@ -6,30 +6,18 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:55:43 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/19 22:31:40 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/21 15:19:40 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol_bonus.h"
 
-char	*lowercase(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		str[i] = ft_tolower(str[i]);
-		i++;
-	}
-	return (str);
-}
-
 int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
 
-	if ((argc == 2 && !ft_strncmp(lowercase(argv[1]), "mandelbrot", 10))
+	if ((argc == 2 && (!ft_strncmp(lowercase(argv[1]), "mandelbrot", 10)
+				|| !ft_strncmp(lowercase(argv[1]), "burning_ship", 12)))
 		|| (argc == 4 && !ft_strncmp(lowercase(argv[1]), "julia", 5)))
 	{
 		fractal.name = argv[1];
