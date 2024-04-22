@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 02:43:52 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/21 20:53:04 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/22 15:20:55 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ void	close_window(void *param)
 	exit(EXIT_SUCCESS);
 }
 
+static void	adjust_boundaries(t_fractal *fractal, double cursor_x,
+		double cursor_y, double zoom_factor)
+{
+	fractal->x_min = cursor_x + ((fractal->x_min - cursor_x) * zoom_factor);
+	fractal->y_min = cursor_y + ((fractal->y_min - cursor_y) * zoom_factor);
+	fractal->y_max = cursor_y + ((fractal->y_max - cursor_y) * zoom_factor);
+	fractal->x_max = cursor_x + ((fractal->x_max - cursor_x) * zoom_factor);
+}
+
 void	scroll_handler(double xdelta, double ydelta, void *param)
 {
 	t_fractal	*fractal;
@@ -32,22 +41,19 @@ void	scroll_handler(double xdelta, double ydelta, void *param)
 	fractal = (t_fractal *)param;
 	if (ydelta < 0)
 	{
-		fractal->zoom *= 1.05;
 		zoom_factor = 1.05;
+		fractal->zoom *= zoom_factor;
 	}
 	else if (ydelta > 0)
 	{
-		fractal->zoom *= 0.95;
 		zoom_factor = 0.95;
+		fractal->zoom *= zoom_factor;
 	}
 	else
 		return ;
 	cursor_x = scale(fractal->xpos, fractal->x_min, fractal->x_max, WIDTH);
 	cursor_y = scale(fractal->ypos, fractal->y_min, fractal->y_max, HEIGHT);
-	fractal->x_min = cursor_x + ((fractal->x_min - cursor_x) * zoom_factor);
-	fractal->y_min = cursor_y + ((fractal->y_min - cursor_y) * zoom_factor);
-	fractal->y_max = cursor_y + ((fractal->y_max - cursor_y) * zoom_factor);
-	fractal->x_max = cursor_x + ((fractal->x_max - cursor_x) * zoom_factor);
+	adjust_boundaries(fractal, cursor_x, cursor_y, zoom_factor);
 	fractal_render(fractal);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:58:38 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/21 20:45:21 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/22 15:34:35 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,6 @@
 
 # define WIDTH 1080
 # define HEIGHT 1080
-
-# define BLACK 0x000000
-# define WHITE 0xFFFFFF
-
-# define RED 0xFF0000
-# define GREEN 0x00FF00
-# define BLUE 0x0000FF
-# define YELLOW 0xFFFF00
-# define CYAN 0x00FFFF
-# define MAGENTA 0xFF00FF
-# define ORANGE 0xFFA500
-# define PURPLE 0x800080
-# define PINK 0xFFC0CB
-# define LIME 0xBFFF00
 
 typedef struct s_complex
 {
@@ -67,7 +53,6 @@ void			fractal_render(t_fractal *fractal);
 int				julia(t_fractal *fractal, t_complex *coord);
 int				mandelbrot(t_fractal *fractal, t_complex *coord);
 int				burning_ship(t_fractal *fractal, t_complex *coord);
-int				newton(t_fractal *fractal, t_complex *coord);
 
 double			scale(double value, double new_min, double new_max,
 					double old_max);

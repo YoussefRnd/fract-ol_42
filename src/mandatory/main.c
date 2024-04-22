@@ -6,23 +6,20 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:55:43 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/18 10:39:18 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/22 15:35:32 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/fractol.h"
 
-char	*lowercase(char *str)
+void	invalid_input(void)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		str[i] = ft_tolower(str[i]);
-		i++;
-	}
-	return (str);
+	ft_putstr_fd("Invalid input!\n", 2);
+	ft_putstr_fd("Usage: <program> <fractal> OR ", 2);
+	ft_putstr_fd("<program> <fractal> <real> <imaginary>\n", 2);
+	ft_putstr_fd("Available fractals:\n\t- mandelbrot\n", 2);
+	ft_putstr_fd("\t- julia\t<real> <imaginary>\n", 2);
+	exit(EXIT_FAILURE);
 }
 
 int	main(int argc, char **argv)
@@ -42,4 +39,6 @@ int	main(int argc, char **argv)
 		fractal_render(&fractal);
 		mlx_loop(fractal.mlx_ptr);
 	}
+	else
+		invalid_input();
 }
