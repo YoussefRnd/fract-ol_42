@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 02:43:52 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/23 12:30:10 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:48:43 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ void	scroll_handler(double xdelta, double ydelta, void *param)
 	fractal = (t_fractal *)param;
 	if (ydelta < 0)
 	{
-		zoom_factor = 1.01;
+		zoom_factor = 1.05;
 		fractal->zoom *= zoom_factor;
 	}
 	else if (ydelta > 0)
 	{
-		zoom_factor = 0.99;
+		zoom_factor = 0.95;
 		fractal->zoom *= zoom_factor;
 	}
 	else

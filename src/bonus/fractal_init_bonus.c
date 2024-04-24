@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 22:08:50 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/22 16:29:10 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:29:43 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	fractal_init(t_fractal *fractal)
 	fractal->img = mlx_new_image(fractal->mlx_ptr, WIDTH, HEIGHT);
 	if (!fractal->img)
 	{
-		mlx_delete_image(fractal->mlx_ptr, fractal->img);
+		mlx_terminate(fractal->mlx_ptr);
 		handle_error();
 	}
 	data_init(fractal);

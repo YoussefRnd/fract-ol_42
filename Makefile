@@ -2,7 +2,7 @@ NAME = fractol
 BONUS = fractol_bonus
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -O3 -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -O3 -g 
 RM = rm -fr
 MKDIR = mkdir -p
 MLX_FLAGS_MAC = -framework Cocoa -framework OpenGL -framework IOKit -lglfw -L"/Users/yboumlak/goinfre/homebrew/Cellar/glfw/3.4/lib"
@@ -54,11 +54,11 @@ $(BONUS): $(OBJS_BONUS)
 	@$(CC) $(CFLAGS) -o $(BONUS) $(OBJS_BONUS) $(LIBFT) $(MLX) $(MLX_FLAGS_MAC)
 	@echo "$@ is ready!"
 
-mlx: 
+mlx:
+	@echo "Building MLX42..."
 	@git submodule init
 	@git submodule update
-	@cmake -B lib/MLX42/build
-	@cmake --build lib/MLX42/build -j4
+	@cd $(MLX_DIR) && cmake -B build && cmake --build build -j4
 
 clean:
 	@echo "Cleaning object files..."
