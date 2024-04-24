@@ -6,12 +6,12 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 20:58:38 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/22 15:34:35 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:35:04 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTOL_BONUS_H
+# define FRACTOL_BONUS_H
 
 # include "../lib/Libft/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"

@@ -6,7 +6,7 @@
 /*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:01:02 by yboumlak          #+#    #+#             */
-/*   Updated: 2024/04/21 15:17:13 by yboumlak         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:33:47 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ int	bernstein_color(t_fractal *fractal, int iterations)
 	red = 9.0 * (1.0 - ni) * pow(ni, 3.0) * 255.0;
 	green = 15.0 * pow((1.0 - ni), 2.0) * pow(ni, 2.0) * 255.0;
 	blue = 8.5 * pow((1.0 - ni), 3.0) * ni * 255.0;
-	return ((red << 16) | (green << 8) | blue);
+	return (get_rgba(red, green, blue, 255));
 }
